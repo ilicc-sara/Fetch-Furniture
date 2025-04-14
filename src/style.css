@@ -13,4 +13,19 @@
 
 .furniture-list {
   list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 30px;
+}
+
+.furniture-picture {
+  height: 200px;
+  width: 350px;
+}
+
+.furniture-item-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 50px;
 }
