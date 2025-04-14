@@ -4,11 +4,22 @@
   box-sizing: inherit;
 }
 
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* color: #783e72; */
+  color: #1f1f1f;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 30px;
+}
+
 .container {
   margin: 100px auto;
   width: 80%;
   height: 100vh;
-  background-color: bisque;
+  /* background-color: bisque; */
 }
 
 .furniture-list {
@@ -28,4 +39,8 @@
   align-items: center;
   justify-content: space-between;
   padding-right: 50px;
+}
+
+.furniture-price {
+  color: #d22dc1;
 }
