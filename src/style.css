@@ -10,12 +10,13 @@ html {
   color: #1f1f1f;
 }
 
-h1 {
+.heading {
   text-align: center;
   padding-top: 30px;
 }
 
-.container {
+.container,
+.single-product {
   margin: 100px auto;
   width: 80%;
   height: 100vh;
@@ -47,12 +48,40 @@ h1 {
   color: #d22dc1;
 }
 
-.hidden {
-  display: none;
+.single-product {
 }
 
-.single-product-img {
+.single-product-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 30px;
+}
+
+.product-img {
   width: 550px;
   height: 500px;
   border: 1px solid black;
+}
+
+.side-pictures {
+  margin-top: 20px;
+  display: flex;
+  width: 550px;
+  justify-content: space-between;
+}
+
+.side-img {
+  width: 100px;
+  height: 70px;
+  border: 1px solid black;
+}
+
+.info-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hidden {
+  display: none;
 }
