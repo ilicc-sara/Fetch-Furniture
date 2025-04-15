@@ -46,3 +46,13 @@ h1 {
 .furniture-price {
   color: #d22dc1;
 }
+
+.hidden {
+  display: none;
+}
+
+.single-product-img {
+  width: 550px;
+  height: 500px;
+  border: 1px solid black;
+}
