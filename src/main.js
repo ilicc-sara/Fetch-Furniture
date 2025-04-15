@@ -13,9 +13,6 @@ function capitalizeEveryWord(str) {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 }
-// funkcija fetchProducts
-// ta funkcija pravi zahtev ka serveru i da vrati data
-// treba nova funkcija displayProducts
 
 function displayProducts(data) {
   data.forEach((product) => {
@@ -37,8 +34,9 @@ function displayProducts(data) {
 }
 
 function displaySingleProduct(data) {
+  singleProductCont.innerHTML = "";
   let item = document.createElement("div");
-  item.innerHTML = `<div class="picrures-cont">
+  item.innerHTML = `<div class="pictures-cont">
     <img
       src="${data.images[0].url}"
       alt="Furniture-Picture"
@@ -88,6 +86,8 @@ function displaySingleProduct(data) {
     <p>Available: <span class="available-number">${data.stock}</span></p>
 
     <p>Brand: <span class="brand-name">${data.company}</span></p>
+
+    <button class="back-btn">BACK</button>
   </div>`;
 
   item.className = "single-product-item";
@@ -95,40 +95,7 @@ function displaySingleProduct(data) {
   singleProductCont.appendChild(item);
 }
 
-// fetch(
-//   "https://www.course-api.com/react-store-single-product?id=recd1jIVIEChmiwhe"
-//   // "https://www.course-api.com/react-store-products"
-// )
-//   .then((response) => {
-//     if (!response.ok) {
-//       throw new Error("Could not fetch resource");
-//     }
-
-//     return response.json();
-//   })
-//   .then((data) => {
-//     console.log(data);
-//     let item = document.createElement("li");
-//     item.innerHTML = `<img
-//           src="${data.images[0].url}"
-//           alt="Furniture-Picture"
-//           class="furniture-picture"
-//           style="display: block"
-//         />
-//         <div class="furniture-item-info">
-//           <h3 class="furniture-name">${capitalizeEveryWord(data.name)}</h3>
-//           <h3 class="furniture-price">${+data.price / 100} $</h3>
-//         </div>`;
-//     item.className = "furniture-item";
-//     item.setAttribute("data-id", data.id);
-//     furnitureList.appendChild(item);
-//   })
-//   .catch((error) => console.error(error));
-
-////////////////////////////////////////////////////
-
 async function fetchData() {
-  // window.fetchData = async function () {
   try {
     const response = await fetch(
       "https://www.course-api.com/react-store-products"
@@ -154,12 +121,8 @@ furnitureList.addEventListener("click", function (e) {
   heading.classList.add("hidden");
   container.classList.add("hidden");
   singleProductCont.classList.remove("hidden");
-  // furnitureList.innerHTML = "";
 
-  fetch(
-    `https://www.course-api.com/react-store-single-product?id=${productId}`
-    // "https://www.course-api.com/react-store-products"
-  )
+  fetch(`https://www.course-api.com/react-store-single-product?id=${productId}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Could not fetch resource");
@@ -169,4 +132,21 @@ furnitureList.addEventListener("click", function (e) {
     })
     .then((data) => displaySingleProduct(data))
     .catch((error) => console.error(error));
+});
+
+singleProductCont.addEventListener("click", function (e) {
+  // prettier-ignore
+  if (!e.target.classList.contains("side-img") && !e.target.classList.contains("back-btn")) return;
+
+  if (e.target.classList.contains("side-img")) {
+    const pictureSrc = e.target.src;
+    const productImg = singleProductCont.querySelector(".product-img");
+    productImg.src = pictureSrc;
+  }
+
+  if (e.target.classList.contains("back-btn")) {
+    heading.classList.remove("hidden");
+    container.classList.remove("hidden");
+    singleProductCont.classList.add("hidden");
+  }
 });
