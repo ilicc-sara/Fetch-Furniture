@@ -48,8 +48,8 @@ html {
   color: #d22dc1;
 }
 
-.single-product {
-}
+/* .single-product {
+} */
 
 .single-product-item {
   display: grid;
@@ -60,7 +60,8 @@ html {
 .product-img {
   width: 550px;
   height: 500px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-radius: 10px;
 }
 
 .side-pictures {
@@ -73,7 +74,8 @@ html {
 .side-img {
   width: 100px;
   height: 70px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-radius: 5px;
 }
 
 .info-cont {
